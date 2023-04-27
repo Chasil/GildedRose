@@ -13,9 +13,9 @@ class GildedRoseTest extends TestCase
     private function validItems(): array
     {
         return [
-            [new Item('foo', 1, 0)], // czy ogólnie może być Quality ujemne
-            [new Item('foo', 0, 2)], // czy w przypadku gdy data sprzedaży jest zerowa Quality zmniejszy się o 2
-            [new Item('foo', 0, 1)], // czy w przypadku gdy data sprzedaży jest zerowa Quality będzie ujemne
+            [new Item('foo', 1, 0)],
+            [new Item('foo', 0, 2)],
+            [new Item('foo', 0, 1)],
         ];
     }
 
@@ -72,8 +72,6 @@ class GildedRoseTest extends TestCase
     {
         return [
             [new Item('Sulfuras, Hand of Ragnaros', 1, 5)]
-            // nigdy nie może zostać sprzedany (przyjmuję, że sellIn nie może być 0)
-            // nigdy nie spada Quality
         ];
     }
 
@@ -87,7 +85,6 @@ class GildedRoseTest extends TestCase
         $gildedRose = new GildedRose([$item]);
         $gildedRose->updateQuality();
         $this->assertSame(5, $item->quality);
-        // Nie przechodzi. Failed asserting that 4 is identical to 5.
     }
 
     /**
@@ -100,7 +97,6 @@ class GildedRoseTest extends TestCase
         $gildedRose = new GildedRose([$item]);
         $gildedRose->updateQuality();
         $this->assertSame(1, $item->sellIn);
-        //Nie wiem czemu nie przechodzi tutaj. Failed asserting that 0 is identical to 1.
     }
 
     private function validBackstageItem(): array
