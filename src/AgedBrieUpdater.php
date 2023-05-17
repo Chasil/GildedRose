@@ -2,7 +2,7 @@
 
 namespace GildedRose;
 
-class LegendaryItemUpdateor implements Updateable
+class AgedBrieUpdater implements Updateable
 {
     public function update(): void
     {

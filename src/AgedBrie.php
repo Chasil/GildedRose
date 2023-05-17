@@ -6,6 +6,6 @@ class AgedBrie extends ItemUpdater
 {
     public function GetUpdateableItem(): Updateable
     {
-        return new AgedBrieUpdateor();
+        return new AgedBrieUpdater();
     }
 }
