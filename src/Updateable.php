@@ -2,7 +2,7 @@
 
 namespace GildedRose;
 
-interface ItemConnector
+interface Updateable
 {
     public function update(): void;
 }

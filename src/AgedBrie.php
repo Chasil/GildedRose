@@ -2,20 +2,10 @@
 
 namespace GildedRose;
 
-class AgedBrie extends GildedRoseItemUpdater
+class AgedBrie extends ItemUpdater
 {
-    private int $quality, $sellIn;
-    private string $name;
-
-    public function __construct(string $name, int $quality, int $sellIn)
+    public function GetUpdateableItem(): Updateable
     {
-        $this->name = $name;
-        $this->quality = $quality;
-        $this->sellIn = $sellIn;
-    }
-
-    public function GetGildedRoseItem(): Item
-    {
-        return new AgedBrieUpdateor($this->name, $this->quality, $this->sellIn);
+        return new AgedBrieUpdateor();
     }
 }

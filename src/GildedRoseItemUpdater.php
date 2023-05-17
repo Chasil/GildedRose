@@ -2,13 +2,20 @@
 
 namespace GildedRose;
 
-abstract class GildedRoseItemUpdater
+abstract class ItemUpdater
 {
-    abstract public function GetGildedRoseItem(): Item;
+    protected string $name;
+    protected int $quality, $sellIn;
+
+    abstract public function GetUpdateableItem(): Updateable;
 
     public function update(string $name, int $quality, int $sellIn): void
     {
-        $gildedItem = $this->GetGildedRoseItem();
-        $gildedItem->update($name, $quality, $sellIn);
+        $this->name = $name;
+        $this->quality = $quality;
+        $this->sellIn = $sellIn;
+
+        $gildedItem = $this->GetUpdateableItem();
+        $gildedItem->update();
     }
 }

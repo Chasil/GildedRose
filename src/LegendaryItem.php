@@ -2,20 +2,10 @@
 
 namespace GildedRose;
 
-class LegendaryItem extends GildedRoseItemUpdater
+class LegendaryItem extends ItemUpdater
 {
-    private int $quality, $sellIn;
-    private string $name;
-
-    public function __construct(string $name, int $quality, int $sellIn)
+    public function GetUpdateableItem(): Updateable
     {
-        $this->name = $name;
-        $this->quality = $quality;
-        $this->sellIn = $sellIn;
-    }
-
-    public function GetGildedRoseItem(): Item
-    {
-        return new LegendaryItemUpdateor($this->name, $this->quality, $this->sellIn);
+        return new LegendaryItemUpdateor();
     }
 }
