@@ -4,7 +4,7 @@ namespace GildedRose;
 
 class LegendaryItem extends ItemUpdater
 {
-    public function GetUpdateableItem(): Updateable
+    public function getUpdateableItem(): Updateable
     {
         return new LegendaryItemUpdater();
     }

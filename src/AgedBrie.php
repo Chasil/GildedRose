@@ -4,7 +4,7 @@ namespace GildedRose;
 
 class AgedBrie extends ItemUpdater
 {
-    public function GetUpdateableItem(): Updateable
+    public function getUpdateableItem(): Updateable
     {
         return new AgedBrieUpdater();
     }

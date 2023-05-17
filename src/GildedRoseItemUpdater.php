@@ -7,7 +7,7 @@ abstract class ItemUpdater
     protected string $name;
     protected int $quality, $sellIn;
 
-    abstract public function GetUpdateableItem(): Updateable;
+    abstract public function getUpdateableItem(): Updateable;
 
     public function update(string $name, int $quality, int $sellIn): void
     {
@@ -15,7 +15,7 @@ abstract class ItemUpdater
         $this->quality = $quality;
         $this->sellIn = $sellIn;
 
-        $gildedItem = $this->GetUpdateableItem();
+        $gildedItem = $this->getUpdateableItem();
         $gildedItem->update();
     }
 }
