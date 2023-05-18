@@ -4,7 +4,17 @@ namespace GildedRose;
 
 class BackstageItemUpdater implements Updateable
 {
+    private const UPDATER_NAMES = 'Backstage passes to a TAFKAL80ETC concert';
+
     public function update(): void
+    {
+        if ($this->name === self::UPDATER_NAMES) {
+            $this->updateQuality();
+            $this->updateSellIn();
+        }
+    }
+
+    private function updateQuality(): void
     {
         if ($this->quality < 50) {
             $this->quality += 1;
@@ -20,11 +30,14 @@ class BackstageItemUpdater implements Updateable
                 }
             }
         }
+    }
 
-        if($this->sellIn < 0) {
+    private function updateSellIn(): void
+    {
+        if ($this->sellIn < 0) {
             $this->quality = $this->quality - $this->quality;
+        } else {
+            $this->sellIn -= 1;
         }
-
-        $this->sellIn -= 1;
     }
 }

@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase;
 
 class GildedRoseTest extends TestCase
 {
-    private function validItems(): array
+    public function validItems(): array
     {
         return [
             [new Item('foo', 1, 0)],
@@ -29,7 +29,7 @@ class GildedRoseTest extends TestCase
         $this->assertGreaterThanOrEqual(0, $item->quality);
     }
 
-    private function validAgedItems(): array
+    public function validAgedItems(): array
     {
         return [
             [new Item('Aged Brie', 2, 2)],
@@ -48,7 +48,7 @@ class GildedRoseTest extends TestCase
         $this->assertSame(3, $item->quality);
     }
 
-    private function validItemsMaxQuality(): array
+    public function validItemsMaxQuality(): array
     {
         return [
             [new Item('Aged Brie', 25, 50)],
@@ -68,7 +68,7 @@ class GildedRoseTest extends TestCase
         $this->assertLessThanOrEqual(50, $item->quality);
     }
 
-    private function validLegendaryItems(): array
+    public function validLegendaryItems(): array
     {
         return [
             [new Item('Sulfuras, Hand of Ragnaros', 1, 5)]
@@ -99,7 +99,7 @@ class GildedRoseTest extends TestCase
         $this->assertSame(1, $item->sellIn);
     }
 
-    private function validBackstageItem(): array
+    public function validBackstageItem(): array
     {
         return [
             [new Item('Backstage passes to a TAFKAL80ETC concert', 10, 5), 7],
