@@ -17,11 +17,10 @@ final class GildedRose
     public function updateQuality(): void
     {
         foreach($this->items as $item) {
-            new AgedBrie();
-            new LegendaryItem();
-            new BackstageItem();
-            new ConjuredItem();
+            $gildedRoseItem = ItemUpdater::createFromType($item);
+            $gildedRoseItem->update();
         }
+
 
 //        foreach ($this->items as $item) {
 //            if ($item->name != 'Aged Brie' and $item->name != 'Backstage passes to a TAFKAL80ETC concert') {
