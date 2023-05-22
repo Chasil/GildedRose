@@ -13,9 +13,9 @@ class GildedRoseTest extends TestCase
     public function validItems(): array
     {
         return [
-            [new Item('foo', 1, 0)],
-            [new Item('foo', 0, 2)],
-            [new Item('foo', 0, 1)],
+            [new Item('Aged Brie', 1, 0)],
+            [new Item('Aged Brie', 0, 2)],
+            [new Item('Aged Brie', 0, 1)],
         ];
     }
 

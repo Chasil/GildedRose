@@ -20,18 +20,20 @@ abstract class GildedRoseItemUpdater
     {
 //       match
 
+        var_dump($item->name);
+
         switch($item->name) {
             case 'Aged Brie':
-                return new AgedBrie();
+                return new AgedBrie($item->name, $item->quality, $item->sellIn);
                 break;
             case 'Backstage passes to a TAFKAL80ETC concert':
-                return new BackstageItem();
+                return new BackstageItem($item->name, $item->quality, $item->sellIn);
                 break;
             case 'Sulfuras, Hand of Ragnaros':
-                return new LegendaryItem();
+                return new LegendaryItem($item->name, $item->quality, $item->sellIn);
                 break;
             case 'Conjured':
-                return new ConjuredItem();
+                return new ConjuredItem($item->name, $item->quality, $item->sellIn);
                 break;
         }
 
