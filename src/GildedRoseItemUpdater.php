@@ -2,7 +2,7 @@
 
 namespace GildedRose;
 
-abstract class ItemUpdater
+abstract class GildedRoseItemUpdater
 {
     protected string $name;
     protected int $quality, $sellIn;
@@ -16,7 +16,7 @@ abstract class ItemUpdater
 
     abstract public function getUpdateableItem(): Updateable;
 
-    public static function createFromType(Item $item): ItemUpdater
+    public static function createFromType(Item $item): GildedRoseItemUpdater
     {
 //       match
 

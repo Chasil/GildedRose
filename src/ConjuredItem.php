@@ -2,7 +2,7 @@
 
 namespace GildedRose;
 
-class ConjuredItem extends ItemUpdater
+class ConjuredItem extends GildedRoseItemUpdater
 {
     public function getUpdateableItem(): Updateable
     {

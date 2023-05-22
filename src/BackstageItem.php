@@ -2,7 +2,7 @@
 
 namespace GildedRose;
 
-class BackstageItem extends ItemUpdater
+class BackstageItem extends GildedRoseItemUpdater
 {
     public function getUpdateableItem(): Updateable
     {

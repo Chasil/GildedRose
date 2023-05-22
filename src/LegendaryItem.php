@@ -2,7 +2,7 @@
 
 namespace GildedRose;
 
-class LegendaryItem extends ItemUpdater
+class LegendaryItem extends GildedRoseItemUpdater
 {
     public function getUpdateableItem(): Updateable
     {
