@@ -4,42 +4,39 @@ namespace GildedRose;
 
 abstract class GildedRoseItemUpdater
 {
-    protected string $name;
-    protected int $quality, $sellIn;
+    protected Item $item;
 
-    public function __construct(string $name, int $quality, int $sellIn)
+    public function __construct(Item $item)
     {
-        $this->name = $name;
-        $this->quality = $quality;
-        $this->sellIn = $sellIn;
+        $this->item = $item;
     }
 
     abstract public function getUpdateableItem(): Updateable;
 
+    //item factory
     public static function createFromType(Item $item): GildedRoseItemUpdater
     {
 //       match
 
-        var_dump($item->name);
-
         switch($item->name) {
             case 'Aged Brie':
-                return new AgedBrie($item->name, $item->quality, $item->sellIn);
+                return new AgedBrie($item);
                 break;
             case 'Backstage passes to a TAFKAL80ETC concert':
-                return new BackstageItem($item->name, $item->quality, $item->sellIn);
+                return new BackstageItem($item);
                 break;
             case 'Sulfuras, Hand of Ragnaros':
-                return new LegendaryItem($item->name, $item->quality, $item->sellIn);
+                return new LegendaryItem($item);
                 break;
             case 'Conjured':
-                return new ConjuredItem($item->name, $item->quality, $item->sellIn);
+                return new ConjuredItem($item);
                 break;
         }
 
         throw new \InvalidArgumentException();
     }
 
+    //item updater
     final public function update(): void
     {
         $gildedItem = $this->getUpdateableItem();

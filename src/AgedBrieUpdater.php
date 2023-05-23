@@ -4,29 +4,24 @@ namespace GildedRose;
 
 class AgedBrieUpdater implements Updateable
 {
-    private const UPDATER_NAMES = 'Aged Brie';
-    protected string $name;
-    protected int $quality, $sellIn;
+    protected Item $item;
 
-    public function __construct($name, $quality, $sellIn)
+    public function __construct(Item $item)
     {
-        $this->name = $name;
-        $this->quality = $quality;
-        $this->sellIn = $sellIn;
+        $this->item = $item;
+
     }
 
     public function update(): void
     {
-        if ($this->name === self::UPDATER_NAMES) {
-            $this->updateQuality();
-            $this->sellIn -= 1;
-        }
+        $this->updateQuality();
+        $this->item->sellIn -= 1;
     }
 
     private function updateQuality(): void
     {
-        if ($this->quality < 50) {
-            $this->quality += 1;
+        if ($this->item->quality < 50) {
+            $this->item->quality += 1;
         }
     }
 }

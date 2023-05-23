@@ -4,34 +4,29 @@ namespace GildedRose;
 
 class ConjuredItemUpdater implements Updateable
 {
-    private const UPDATER_NAMES = 'Conjured';
-    protected string $name;
-    protected int $quality, $sellIn;
+    protected Item $item;
 
-    public function __construct($name, $quality, $sellIn)
+    public function __construct(Item $item)
     {
-        $this->name = $name;
-        $this->quality = $quality;
-        $this->sellIn = $sellIn;
+        $this->item = $item;
+
     }
 
     public function update(): void
     {
-        if ($this->name === self::UPDATER_NAMES) {
-            $this->updateQuality();
-            $this->sellIn -= 1;
-        }
+        $this->updateQuality();
+        $this->item->sellIn -= 1;
     }
 
     private function updateQuality(): void
     {
-        if ($this->sellIn < 0) {
-            if ($this->quality > 0) {
-                $this->quality -= 1;
+        if ($this->item->sellIn < 0) {
+            if ($this->item->quality > 0) {
+                $this->item->quality -= 1;
             }
         } else {
-            if ($this->quality > 0) {
-                $this->quality -= 2;
+            if ($this->item->quality > 0) {
+                $this->item->quality -= 2;
             }
         }
     }

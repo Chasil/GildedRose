@@ -6,6 +6,6 @@ class AgedBrie extends GildedRoseItemUpdater
 {
     public function getUpdateableItem(): Updateable
     {
-        return new AgedBrieUpdater($this->name, $this->quality, $this->sellIn);
+        return new AgedBrieUpdater($this->item);
     }
 }
