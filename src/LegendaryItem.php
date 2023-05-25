@@ -2,9 +2,9 @@
 
 namespace GildedRose;
 
-class LegendaryItem extends GildedRoseItemUpdater
+class LegendaryItem extends GildedRoseItem
 {
-    public function getUpdateableItem(): Updateable
+    public function createUpdater(): GildedRoseItemUpdater
     {
         return new LegendaryItemUpdater($this->item);
     }

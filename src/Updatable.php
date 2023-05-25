@@ -2,7 +2,7 @@
 
 namespace GildedRose;
 
-interface Updateable
+interface Updatable
 {
     public function update(): void;
 }

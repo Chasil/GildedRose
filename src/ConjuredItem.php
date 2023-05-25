@@ -2,9 +2,9 @@
 
 namespace GildedRose;
 
-class ConjuredItem extends GildedRoseItemUpdater
+class ConjuredItem extends GildedRoseItem
 {
-    public function getUpdateableItem(): Updateable
+    public function createUpdater(): GildedRoseItemUpdater
     {
         return new ConjuredItemUpdater($this->item);
     }

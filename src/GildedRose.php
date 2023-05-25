@@ -17,7 +17,7 @@ final class GildedRose
     public function updateQuality(): void
     {
         foreach($this->items as $item) {
-            $gildedRoseItem = GildedRoseItemUpdater::createFromType($item);
+            $gildedRoseItem = GildedRoseItemFactory::createFromType($item);
             $gildedRoseItem->update();
         }
 

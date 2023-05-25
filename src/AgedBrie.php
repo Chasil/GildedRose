@@ -2,9 +2,9 @@
 
 namespace GildedRose;
 
-class AgedBrie extends GildedRoseItemUpdater
+class AgedBrie extends GildedRoseItem
 {
-    public function getUpdateableItem(): Updateable
+    public function createUpdater(): GildedRoseItemUpdater
     {
         return new AgedBrieUpdater($this->item);
     }

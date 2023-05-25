@@ -2,16 +2,8 @@
 
 namespace GildedRose;
 
-class ConjuredItemUpdater implements Updateable
+class ConjuredItemUpdater extends GildedRoseItemUpdater
 {
-    protected Item $item;
-
-    public function __construct(Item $item)
-    {
-        $this->item = $item;
-
-    }
-
     public function update(): void
     {
         $this->updateQuality();
