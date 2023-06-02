@@ -9,30 +9,26 @@ class GildedItemFunctions
 
     public function updateQuality(int $quality, ?int $sellIn): int
     {
-        if ($this->isQualityValueValid($quality)) {
-            if ($this->isQualityNotMaxed($quality)) {
-                $quality = $this->increaseQualityBy($quality, 1);
-                if ($sellIn < 11) {
-                    if ($this->isQualityNotMaxed($quality)) {
-                        $quality = ($sellIn < 6)
-                            ? $this->increaseQualityBy($quality, 2)
-                            : $this->increaseQualityBy($quality, 1);
-                    }
-                }
-            }
+        if (!$this->isQualityValueValid($quality)) {
+            return $quality;
+        }
+        if (!$this->isQualityValueValid($quality, true)) {
+            return $quality;
+        }
+        if (!($sellIn < 11)) {
+            return $quality;
         }
 
-        return $quality;
+        $quality = $this->increaseQualityBy($quality, 1);
+
+        return ($sellIn < 6)
+            ? $this->increaseQualityBy($quality, 2)
+            : $this->increaseQualityBy($quality, 1);
     }
 
-    private function isQualityValueValid(int $quality): bool
+    private function isQualityValueValid(int $quality, bool $inRange = false): bool
     {
-        return $quality >= self::MIN_QUALITY && $quality <= self::MAX_QUALITY;
-    }
-
-    private function isQualityNotMaxed(int $quality): bool
-    {
-        return $quality < self::MAX_QUALITY;
+        return ($inRange) ? $quality >= self::MIN_QUALITY && $quality <= self::MAX_QUALITY : $quality < self::MAX_QUALITY;
     }
 
     private function increaseQualityBy(int $quality, int $increaseValue): int
