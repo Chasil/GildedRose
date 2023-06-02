@@ -6,26 +6,9 @@ class BackstageItemUpdater extends GildedRoseItemUpdater
 {
     public function update(): void
     {
-        $this->updateQuality();
+        $gildedItemFunctions = new GildedItemFunctions();
+        $this->item->quality = $gildedItemFunctions->updateQuality($this->item->quality, $this->item->sellIn);
         $this->updateSellIn();
-    }
-
-    private function updateQuality(): void
-    {
-        if ($this->item->quality < 50) {
-            $this->item->quality += 1;
-
-            if ($this->item->sellIn < 11) {
-                if ($this->item->quality < 50) {
-                    $this->item->quality += 1;
-                }
-            }
-            if ($this->item->sellIn < 6) {
-                if ($this->item->quality < 50) {
-                    $this->item->quality += 1;
-                }
-            }
-        }
     }
 
     private function updateSellIn(): void

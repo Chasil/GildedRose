@@ -6,8 +6,6 @@ class GildedRoseItemFactory
 {
     public static function createFromType(Item $item): GildedRoseItem
     {
-//       match
-
         switch($item->name) {
             case 'Aged Brie':
                 return new AgedBrie($item);
