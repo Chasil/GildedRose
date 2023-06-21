@@ -2,7 +2,7 @@
 
 namespace GildedRose;
 
-abstract class GildedRoseItem implements Updatable
+class GildedRoseItem implements Updatable
 {
     protected GildedRoseItemUpdater $updater;
     public function __construct(protected Item $item)
@@ -15,5 +15,8 @@ abstract class GildedRoseItem implements Updatable
         $this->updater->update();
     }
 
-    public abstract function createUpdater(): GildedRoseItemUpdater;
+    public function createUpdater(): GildedRoseItemUpdater
+    {
+        return new GildedRoseItemUpdater($this->item);
+    }
 }

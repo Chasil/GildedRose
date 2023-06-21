@@ -4,38 +4,20 @@ namespace GildedRose;
 
 class BackstageItemUpdater extends GildedRoseItemUpdater
 {
-    public function update(): void
-    {
-        $this->updateQuality();
-        $this->updateSellIn();
-    }
+    protected const QUALITY_CHANGE = 1;
+    protected const DOUBLE_QUALITY_CHANGE_WHEN_SELL_IN = 10;
+    protected const TRIPLE_QUALITY_CHANGE_WHEN_SELL_IN = 5;
 
-    private function updateQuality(): void
+    protected function updateQuality(): void
     {
-        if (!$this->isQualityValueValid($this->item->quality) || !($this->item->sellIn < 11)) {
-            $this->item->quality += 0;
-        } else {
-            $this->item->quality = $this->increaseQualityBy($this->item->quality, 1);
+        $this->item->quality += static::QUALITY_CHANGE;
 
-            $this->item->quality = ($this->item->sellIn < 6)
-                ? $this->increaseQualityBy($this->item->quality, 2)
-                : $this->increaseQualityBy($this->item->quality, 1);
+        if ($this->item->sellIn <= static::DOUBLE_QUALITY_CHANGE_WHEN_SELL_IN) {
+            $this->item->quality += static::QUALITY_CHANGE;
         }
 
-        if ($this->item->sellIn < 0) {
-            $this->item->quality = $this->item->quality - $this->item->quality;
+        if ($this->item->sellIn <= self::TRIPLE_QUALITY_CHANGE_WHEN_SELL_IN) {
+            $this->item->quality += static::QUALITY_CHANGE;
         }
-    }
-
-    private function updateSellIn(): void
-    {
-        if ($this->item->sellIn > 0) {
-            $this->item->sellIn -= 1;
-        }
-    }
-
-    protected function isQualityValueValid(int $quality): bool
-    {
-        return $quality >= self::MIN_QUALITY && $quality <= self::MAX_QUALITY;
     }
 }
